@@ -25,7 +25,7 @@ const commonTaskHandler = (task, delayBefore = 5000, delayAfter = 2000, callback
     touchOperation.switchApp()
     sleep(delayAfter)
     // 返回任务列表界面
-    touchOperation.returnOpt
+    touchOperation.returnOpt()
     receiveReward(task)
 }
 
@@ -73,6 +73,7 @@ const completeTask4 = () => {
 /* 看15s视频得奖励 */
 const completeTask5 = () => {
     let task = className("android.view.View").text("看15s视频得奖励").findOne()
+    clickTaskBtn(task)
     sleep(18000)
     className("android.widget.TextView").text("| 跳过").findOne().click()
     className("android.widget.LinearLayout").depth(11).findOne().click()
@@ -81,6 +82,7 @@ const completeTask5 = () => {
 /* 搜一搜推荐商品 */
 const completeTask6 = () => {
     let task = className("android.view.View").text("搜一搜推荐商品").findOne()
+    clickTaskBtn(task)
     sleep(600)
     className("android.widget.EditText").findOne().setText("水")
     className("android.widget.Button").findOne().click()
@@ -143,21 +145,22 @@ const completeTask21 = () => {
     let task = className("android.view.View").text("去天猫拿红包").findOne()
     commonTaskHandler(task, 13000)
 }
-completeTask1()
-completeTask2()
-completeTask3()
-completeTask4()
-completeTask5()
-completeTask6()
-completeTask7()
-completeTask8()
-completeTask9()
-completeTask10()
-completeTask11()
-completeTask12()
-completeTask20()
-completeTask21()
+completeTask6() // 搜一搜推荐商品
+completeTask8() // 浏览指定频道好物
+completeTask7() // 去浏览全新好物
+completeTask9() // 去蚂蚁庄园逛一逛
+completeTask10() //去支付宝农场领水果
+completeTask11() //去蚂蚁森林逛一逛
+completeTask12() // 去快手极速版领红包
+completeTask1() // 去芭芭农场领水果
+completeTask3() //去中国移动签到领话费
+completeTask4() //去淘宝签到领红包
+completeTask5() // 看15s视频得奖励
+completeTask2() // 薅羊毛赚话费
+completeTask20() //去饿了么果园领水果
+completeTask21() //去天猫拿红包
 
+// 去逛一逛淘金币
 /* 所有任务都完成之后的操作 */
 while (!className("android.view.View").text("赚").exists()) {
     touchOperation.shootDice()
